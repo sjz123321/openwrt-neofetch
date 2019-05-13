@@ -12,7 +12,7 @@ define Package/$(PKG_NAME)
 	SECTION:=Utilities
 	CATEGORY:=Utilities
 	TITLE:=Neofetch for openwrt
-	DEPENDS:=bash
+	DEPENDS:=+bash
 	URL:=https://github.com/sjz123321/openwrt-neofetch
 endef
 
