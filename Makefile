@@ -24,9 +24,18 @@ Displays information about your OS
 endef
 
 define Build/Prepare
-	git clone https://github.com/dylanaraps/neofetch.git
-	rm -f !(neofetch)
-	chmod +x neofetch
+	if [ -n `ls $(PKG_BUILD_DIR)/shadowtunnel-$(PKG_VERSION)/$(PKG_VERSION)/neofetch` ] 
+	then 
+		cd $(PKG_BUILD_DIR)/shadowtunnel-$(PKG_VERSION)/$(PKG_VERSION)/neofetch/
+		git pull
+		rm -f !(neofetch)
+		chmod +x neofetch
+	else
+		git clone https://github.com/dylanaraps/neofetch.git $(PKG_BUILD_DIR)/shadowtunnel-$(PKG_VERSION)/$(PKG_VERSION)/neofetch
+		cd $(PKG_BUILD_DIR)/shadowtunnel-$(PKG_VERSION)/$(PKG_VERSION)/neofetch/
+		rm -f !(neofetch)
+		chmod +x neofetch
+	fi
 endef
 
 define Build/Configure
